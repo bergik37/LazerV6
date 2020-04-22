@@ -248,6 +248,8 @@ public class BaseActor extends Group
     {
         this.getColor().a = opacity;
     }
+
+
     // ----------------------------------------------
     // physics/motion methods
     // ----------------------------------------------
@@ -300,6 +302,22 @@ public class BaseActor extends Group
             velocityVec.setLength(speed);
     }
 
+    public void setSpeedY(float speed)
+    {
+        // if length is zero, then assume motion angle is zero degrees
+        if (velocityVec.len() == 0)
+            velocityVec.set(0, speed);
+        else
+            velocityVec.setLength(speed);
+    }
+
+    public float getSpeedY()
+    {
+        return velocityVec.len();
+    }
+
+
+
     /**
      *  Calculates the speed of movement (in pixels/second).
      *  @return speed of movement (pixels/second)
@@ -316,6 +334,11 @@ public class BaseActor extends Group
     public boolean isMoving()
     {
         return (getSpeed() > 0);
+    }
+
+    public boolean isMovingY()
+    {
+        return (getSpeedY() > 0);
     }
 
     /**

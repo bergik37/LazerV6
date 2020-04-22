@@ -78,12 +78,17 @@ public class LevelScreen extends BaseScreen {
             //if (laserend.overlaps(quad) && !quad.collected)
             if (laser.overlaps(quad))
             {
+                if(laser.isMoving()) {
+                    laser.setSpeed(30);
+                }
+                else if (laser.isMovingY()) {
+                laser.setSpeedY(30);
+            }
 
                // quad.collected = true;
                 //lasermid.addAction(Actions.rotateBy(90));
                 laser.addAction(Actions.rotateBy(90));
                 laser.addAction(Actions.removeAction(Actions.rotateBy(90)));
-                
 
                 //laserend.addAction(Actions.moveBy(0,30));
                // laser.setMotionAngle(90);
