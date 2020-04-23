@@ -41,6 +41,7 @@ public class BaseActor extends Group
     private boolean animationPaused;
 
     private Vector2 velocityVec;
+    private  Vector2 velocityVecY;
     private Vector2 accelerationVec;
     private float acceleration;
     private float maxSpeed;
@@ -68,6 +69,7 @@ public class BaseActor extends Group
 
         // initialize physics data
         velocityVec = new Vector2(0,0);
+        velocityVecY=new Vector2(0,0);
         accelerationVec = new Vector2(0,0);
         acceleration = 0;
         maxSpeed = 1000;
@@ -302,22 +304,6 @@ public class BaseActor extends Group
             velocityVec.setLength(speed);
     }
 
-    public void setSpeedY(float speed)
-    {
-        // if length is zero, then assume motion angle is zero degrees
-        if (velocityVec.len() == 0)
-            velocityVec.set(0, speed);
-        else
-            velocityVec.setLength(speed);
-    }
-
-    public float getSpeedY()
-    {
-        return velocityVec.len();
-    }
-
-
-
     /**
      *  Calculates the speed of movement (in pixels/second).
      *  @return speed of movement (pixels/second)
@@ -326,6 +312,26 @@ public class BaseActor extends Group
     {
         return velocityVec.len();
     }
+
+    public void setSpeedY(float speedY)
+    {
+        // if length is zero, then assume motion angle is zero degrees
+        if (velocityVecY.len() == 0)
+            velocityVecY.set(0, speedY);
+        else
+            velocityVecY.setLength(speedY);
+    }
+
+    public float getSpeedY()
+    {
+
+        return velocityVecY.len();
+    }
+
+
+
+
+
 
     /**
      *  Determines if this object is moving (if speed is greater than zero).
