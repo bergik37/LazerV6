@@ -11,7 +11,11 @@ public class LevelScreen extends BaseScreen {
     private Label messageLabel;
     private Triangle triangle;
     private Quad quad;
+
+    float x =1;
+    float y=0;
     private Laser laser;
+
     private Lasermid lasermid;
     private Laserend laserend;
 
@@ -64,70 +68,34 @@ public class LevelScreen extends BaseScreen {
 
     @Override
     public void update(float dt) {
-        //laser.setSize(distance,laser.getHeight());
-        // lasermid.setSize(distance,laserend.getHeight());
-        //lasermid.getPosition(distance,laserend.getHeight());
-
-        int x = 1;
-        int y = 0;
-
-        //laser.setSpeed(10);
-
-        //System.out.println(x);
-
-
 
         for (BaseActor quadActor : BaseActor.getList(mainStage, "Quad")) {
             Quad quad = (Quad) quadActor;
-            //if (laserend.overlaps(quad) && !quad.collected)
             if (laser.overlaps(quad) && x > 0 && y == 0) {
-                //laser.addAction(Actions.removeAction(Actions.rotateBy(90)));
-                //laser.addAction(Actions.rotateBy(90));
-                laser.setPosition(laser.getX(), laser.getY());
-                //if (laser.getSpeed() > 0){
-                x = 0;
-                y = 1;
-               // laser.getSpeed();
-                laser.getSpeedY();
-                System.out.println("X1 = "+x);
-                System.out.println("Y1 = "+y);
-            }
-            else if (laser.overlaps(quad) && x == 0 && y > 0) {
-                //laser.addAction(Actions.removeAction(Actions.rotateBy(90)));
-                //laser.addAction(Actions.rotateBy(90));
-                laser.setPosition(laser.getX(), laser.getY());
-                //if (laser.getSpeed() > 0){
-                x = -1;
-                y = 0;
-                laser.setSpeed(0);
-                laser.setSpeedY(0);
-
-                System.out.println("X2 = "+x);
-                System.out.println("Y2 = "+y);
-
-                //laser.setSpeedY(30);
-                //laser.addAction(Actions.rotateBy(90));
-                // laser.addAction(Actions.removeAction(Actions.rotateBy(90)));
-                // } else if (laser.getSpeed() > 0) {
-                //laser.setSpeedY(30);
-                // laser.addAction(Actions.rotateBy(90));
-                //laser.addAction(Actions.removeAction(Actions.rotateBy(90)));
-                // }
-
-                // quad.collected = true;
-                //lasermid.addAction(Actions.rotateBy(90));
-                // laser.addAction(Actions.rotateBy(90));
-                // laser.addAction(Actions.removeAction(Actions   .rotateBy(90)));
-
-                //laserend.addAction(Actions.moveBy(0,30));
-                // laser.setMotionAngle(90);
-                // laser.setSpeed(30);
-   /*             laser.setPosition(laserend.getX()+laserend.getWidth()+laserend.getHeight(),laserend.getY());
-                laser.setPosition(quad.getX(),quad.getY());
                 laser.addAction(Actions.rotateBy(90));
                 laser.setMotionAngle(90);
-                laser.setSize(lasermid.getWidth(),lasermid.getHeight());
-*/
+                x = 0;
+                y = 1;
+            }
+            else if (laser.overlaps(quad) && x == 0 && y > 0) {
+
+                laser.addAction(Actions.rotateBy(90));
+                laser.setMotionAngle(180);
+                x = -1;
+                y = 0;
+            }
+                else if (laser.overlaps(quad) && x < 0 && y == 0) {
+                    laser.addAction(Actions.rotateBy(90));
+                    laser.setMotionAngle(270);
+                    x = 1;
+                    y = -1;
+            }
+            else if (laser.overlaps(quad) && x > 0 && y <0) {
+                laser.addAction(Actions.rotateBy(90));
+                laser.setMotionAngle(360);
+                x = 1;
+                y = 0;
+
             }
         }
     }

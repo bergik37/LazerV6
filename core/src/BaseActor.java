@@ -313,24 +313,6 @@ public class BaseActor extends Group
         return velocityVec.len();
     }
 
-    public void setSpeedY(float speedY)
-    {
-        // if length is zero, then assume motion angle is zero degrees
-        if (velocityVecY.len() == 0)
-            velocityVecY.set(0, speedY);
-        else
-            velocityVecY.setLength(speedY);
-    }
-
-    public float getSpeedY()
-    {
-
-        return velocityVecY.len();
-    }
-
-
-
-
 
 
     /**
@@ -342,10 +324,6 @@ public class BaseActor extends Group
         return (getSpeed() > 0);
     }
 
-    public boolean isMovingY()
-    {
-        return (getSpeedY() > 0);
-    }
 
     /**
      *  Sets the angle of motion (in degrees).
@@ -567,7 +545,7 @@ public class BaseActor extends Group
 
     /**
      *  Set world dimensions for use by methods boundToWorld() and scrollTo().
-     *  @param BaseActor whose size determines the world bounds (typically a background image)
+     * // @param BaseActor whose size determines the world bounds (typically a background image)
      */
     public static void setWorldBounds(BaseActor ba)
     {

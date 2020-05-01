@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 public class Laser extends BaseActor {
 
-    float x;
+
     public Laser(float x, float y, Stage s) {
         super(x, y, s);
         loadTexture("assets/Line11.png");
@@ -16,7 +16,6 @@ public class Laser extends BaseActor {
         setMaxSpeed(800);
         setBoundaryPolygon(8);
         setSpeed(10);
-        setSpeedY(10);
 
     }
 
